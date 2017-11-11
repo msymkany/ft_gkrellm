@@ -20,6 +20,7 @@ SOURCE := main.cpp \
         IMonitorModule.cpp \
         HostnameModule.cpp \
         OSModule.cpp \
+        RAMModule.cpp \
 
 OBJECTS := $(SOURCE:.cpp=.o)
 

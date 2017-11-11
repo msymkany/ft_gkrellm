@@ -14,6 +14,8 @@
 #include "DateTimeModule.hpp"
 #include "HostnameModule.hpp"
 #include "OSModule.hpp"
+#include "RAMModule.hpp"
+
 
 int main()
 {
@@ -33,4 +35,15 @@ int main()
 	}
 	std::cout<< std::endl;
 
+	std::cout << os.getTitle() << std::endl;
+	for (size_t i = 0; i < os.getSize(); i++)
+	{
+		std::cout << os.getInfo(i) << std::endl;
+	}
+	std::cout<< std::endl;
+
+	std::cout << "RAM info"<< std::endl;
+	RAMModule ram;
+	std::cout<< std::endl;
+	return 0;
 }

@@ -1,6 +1,6 @@
 #include "HostnameModule.hpp"
 
-HostnameModule::HostnameModule()
+HostnameModule::HostnameModule() : IMonitorModule("Hostname/username module") { monitorInfo(); }
 HostnameModule::HostnameModule(const HostnameModule & rhs) { *this = rhs; }
 HostnameModule	&HostnameModule::operator=(const HostnameModule & rhs)
 {

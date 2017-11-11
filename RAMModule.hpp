@@ -3,6 +3,13 @@
 
 #include <iostream>
 #include "IMonitorModule.hpp"
+#include <unistd.h>
+#include <mach/mach_host.h>
+#include <sstream>
+#include <mach/vm_statistics.h>
+#include <mach/mach_types.h>
+#include <mach/mach_init.h>
+#include <mach/mach_host.h>
 
 class RAMModule : public IMonitorModule {
 public:
@@ -15,3 +22,5 @@ public:
 };
 
 #endif
+
+

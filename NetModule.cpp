@@ -10,4 +10,9 @@ NetModule	&NetModule::operator=(const NetModule & rhs)
 
 NetModule::~NetModule() { return; }
 
+void NetModule::monitorInfo() {
+	//	Your code here
+
+}
+
 

@@ -10,4 +10,6 @@ CPUModule	&CPUModule::operator=(const CPUModule & rhs)
 
 CPUModule::~CPUModule() { return; }
 
-
+void CPUModule::monitorInfo() {
+	//	Your code here
+}
