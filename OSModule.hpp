@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "IMonitorModule.hpp"
+#include <sys/utsname.h>
 
 class OSModule : public IMonitorModule {
 public:
@@ -10,6 +11,7 @@ public:
 	OSModule(const OSModule & rhs);
 	OSModule &operator=(const OSModule & rhs);
 	~OSModule();
+	void 	monitorInfo();
 
 };
 

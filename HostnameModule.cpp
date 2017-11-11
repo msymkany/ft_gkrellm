@@ -1,17 +1,33 @@
 #include "HostnameModule.hpp"
 
-HostnameModule::HostnameModule() : IMonitorModule("Hostname/username module") { monitorInfo(); }
+HostnameModule::HostnameModule()
 HostnameModule::HostnameModule(const HostnameModule & rhs) { *this = rhs; }
 HostnameModule	&HostnameModule::operator=(const HostnameModule & rhs)
 {
+	_title = rhs._title;
 	return *this;
 }
 
 HostnameModule::~HostnameModule() { return; }
 
 void HostnameModule::monitorInfo() {
-	char hostname[HOST_NAME_MAX];
-	char username[LOGIN_NAME_MAX];
+	char hostname[_SC_HOST_NAME_MAX];
+	char username[_SC_LOGIN_NAME_MAX];
+
+	if (gethostname(hostname, _SC_HOST_NAME_MAX))
+		_info.push_back("Can't resolve hostname");
+	else
+	{
+		std::string h(hostname);
+		_info.push_back(h);
+	}
+	if (getlogin_r(username, _SC_LOGIN_NAME_MAX))
+		_info.push_back("Can't resolve username");
+	else
+	{
+		std::string u(username);
+		_info.push_back(u);
+	}
 }
 
 

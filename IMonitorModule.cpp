@@ -15,7 +15,7 @@ IMonitorModule	&IMonitorModule::operator=(const IMonitorModule & rhs)
 IMonitorModule::~IMonitorModule() { return; }
 
 
-std::string		IMonitorModule::get_title() const { return _title; }
+std::string		IMonitorModule::getTitle() const { return _title; }
 size_t IMonitorModule::getSize() const {
 	return _info.size();
 }

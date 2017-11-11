@@ -7,7 +7,7 @@
 class IMonitorModule {
 public:
 	virtual ~IMonitorModule();
-	std::string		get_title() const;
+	std::string		getTitle() const;
 
 	const char *getInfo(size_t i) const;
 	size_t 	getSize() const;

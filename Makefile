@@ -18,6 +18,8 @@ FL := -Wall -Wextra -Werror
 SOURCE := main.cpp \
         DateTimeModule.cpp \
         IMonitorModule.cpp \
+        HostnameModule.cpp \
+        OSModule.cpp \
 
 OBJECTS := $(SOURCE:.cpp=.o)
 

@@ -10,6 +10,7 @@ public:
 	RAMModule(const RAMModule & rhs);
 	RAMModule &operator=(const RAMModule & rhs);
 	~RAMModule();
+	void 	monitorInfo();
 
 };
 

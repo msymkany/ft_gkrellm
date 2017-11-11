@@ -10,6 +10,7 @@ public:
 	NetModule(const NetModule & rhs);
 	NetModule &operator=(const NetModule & rhs);
 	~NetModule();
+	void 	monitorInfo();
 
 };
 
