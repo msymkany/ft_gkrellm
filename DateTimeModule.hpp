@@ -2,14 +2,18 @@
 # define DATETIMEMODULE_HPP_
 
 #include <iostream>
+#include <ctime>
+#include "IMonitorModule.hpp"
 
-class DateTimeModule {
+class DateTimeModule : public IMonitorModule {
 public:
 	DateTimeModule();
 	DateTimeModule(const DateTimeModule & rhs);
 	DateTimeModule &operator=(const DateTimeModule & rhs);
-	virtual ~DateTimeModule();
+	~DateTimeModule();
+	void 	monitorInfo();
 
 };
 
 #endif
+

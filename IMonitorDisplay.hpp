@@ -2,6 +2,7 @@
 # define IMONITORDISPLAY_HPP_
 
 #include <iostream>
+#include "IMonitorModule.hpp"
 
 class IMonitorDisplay {
 public:
@@ -10,12 +11,12 @@ public:
 	IMonitorDisplay &operator=(const IMonitorDisplay & rhs);
 	virtual ~IMonitorDisplay();
 
-protected:
-	
-	bool		display;
 	bool		getdisplay() const;
 	void		setdisplay( bool rhs );
-	
+
+protected:
+	bool		display;
+
 };
 
 #endif

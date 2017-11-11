@@ -15,7 +15,9 @@ NAME := ft_gkrellm
 CXX := @clang++
 FL := -Wall -Wextra -Werror
 
-SOURCE := .cpp \ 
+SOURCE := main.cpp \
+        DateTimeModule.cpp \
+        IMonitorModule.cpp \
 
 OBJECTS := $(SOURCE:.cpp=.o)
 

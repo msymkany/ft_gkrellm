@@ -2,13 +2,17 @@
 # define HOSTNAMEMODULE_HPP_
 
 #include <iostream>
+#include "IMonitorModule.hpp"
+#include <unistd.h>
+#include <climits>
 
-class HostnameModule {
+class HostnameModule : public IMonitorModule {
 public:
 	HostnameModule();
 	HostnameModule(const HostnameModule & rhs);
 	HostnameModule &operator=(const HostnameModule & rhs);
-	virtual ~HostnameModule();
+	~HostnameModule();
+	void 	monitorInfo();
 
 };
 

@@ -2,13 +2,14 @@
 # define RAMMODULE_HPP_
 
 #include <iostream>
+#include "IMonitorModule.hpp"
 
-class RAMModule {
+class RAMModule : public IMonitorModule {
 public:
 	RAMModule();
 	RAMModule(const RAMModule & rhs);
 	RAMModule &operator=(const RAMModule & rhs);
-	virtual ~RAMModule();
+	~RAMModule();
 
 };
 

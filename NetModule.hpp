@@ -2,13 +2,14 @@
 # define NETMODULE_HPP_
 
 #include <iostream>
+#include "IMonitorModule.hpp"
 
-class NetModule {
+class NetModule : public IMonitorModule {
 public:
 	NetModule();
 	NetModule(const NetModule & rhs);
 	NetModule &operator=(const NetModule & rhs);
-	virtual ~NetModule();
+	~NetModule();
 
 };
 
