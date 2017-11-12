@@ -48,10 +48,10 @@ void     SDLDisplay::draw_info(std::string str, int x, int y, TTF_Font *font, SD
 }
 
 void SDLDisplay::start()
-{
-    TTF_Font *font;
+{TTF_Font *font;
     TTF_Font *f;
 SDL_Rect rect;
+SDL_Rect rec;
 
 	window = nullptr;
 	renderer = nullptr;
@@ -109,19 +109,26 @@ SDL_Color Colour = {170,72,95, 0};
 		rect.y = 0;
 		rect.w = 350;
 		rect.h = 400;
-		SDL_SetRenderDrawColor(renderer, 153,126,201, 0 );
+		SDL_SetRenderDrawColor(renderer, 210,194,238, 0 );
 
 		SDL_RenderFillRect(renderer, &rect);
 		SDL_SetRenderDrawColor(renderer, 230, 223, 240, 0 );
+      SDL_Surface *bmp = SDL_LoadBMP("libraries/pony.bmp");
+	SDL_Texture *tex = SDL_CreateTextureFromSurface(renderer, bmp);
+	SDL_FreeSurface(bmp);
+	rec.w = 150;
+	rec.h = 150;
+	rec.x = 1050;
+	rec.y = 250;
+	SDL_RenderCopy(renderer, tex, NULL, &rec);
 
-
-        draw_info("OS Info :", 0, 0, font, selectedColour);
+        draw_info("OS Info :", 5, 0, font, selectedColour);
         draw_info("       press 1", 0, 40, font, selectedColour);
-        draw_info("CPU Info : ", 0, 80, font, selectedColour);
+        draw_info("CPU Info : ", 5, 80, font, selectedColour);
         draw_info("       press 2", 0, 120, font, selectedColour);
-        draw_info("RAM Info :", 0, 160,font, selectedColour);
+        draw_info("RAM Info :", 5, 160,font, selectedColour);
         draw_info("       press 3", 0, 200,font, selectedColour);
-        draw_info("NETWORK Info :", 0, 240, font, selectedColour);
+        draw_info("NETWORK Info :", 5, 240, font, selectedColour);
         draw_info("       press 4", 0, 280, font, selectedColour);
 
         if (useClip == 0)
@@ -129,7 +136,7 @@ SDL_Color Colour = {170,72,95, 0};
 
         	
         	
-        	draw_info("OS Info :", 0, 0, font, Colour);
+        	draw_info("OS Info :", 5, 0, font, Colour);
         draw_info("       press 1", 0, 40, font, Colour);
 
             t.monitorInfo();
@@ -145,21 +152,21 @@ SDL_Color Colour = {170,72,95, 0};
         }
         if (useClip == 1){
 
-        	draw_info("CPU Info : ", 0, 80, font, Colour);
+        	draw_info("CPU Info : ", 5, 80, font, Colour);
         draw_info("       press 2", 0, 120, font, Colour);
         	cpu.monitorInfo();
           for (size_t i = 0; i < cpu.getSize(); i++)
                draw_info(cpu.getInfo(i), 400, 40 + (i * 40) , f, selectedColour);
         }
         if (useClip == 2){
-        	draw_info("RAM Info :", 0, 160,font, Colour);
+        	draw_info("RAM Info :", 5, 160,font, Colour);
         draw_info("       press 3", 0, 200,font, Colour);
           	ram.monitorInfo();
           for (size_t i = 0; i < ram.getSize(); i++)
                draw_info(ram.getInfo(i), 400, 40 + (i * 40) , f, selectedColour);
         }
       if (useClip == 3){
-      	draw_info("NETWORK Info :", 0, 240, font, Colour);
+      	draw_info("NETWORK Info :", 5, 240, font, Colour);
         draw_info("       press 4", 0, 280, font, Colour);
 
          	net.monitorInfo();
@@ -167,11 +174,15 @@ SDL_Color Colour = {170,72,95, 0};
                draw_info(net.getInfo(i), 400, 40 + (i * 40) , f, selectedColour);
       }
 
+
+
+
         SDL_RenderPresent(renderer);
         SDL_RenderClear(renderer);
+        SDL_DestroyTexture(tex);
         if (quit == true)
             break ;
-        SDL_Delay(1000);
+        SDL_Delay(500);
 	}
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);

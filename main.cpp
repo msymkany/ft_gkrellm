@@ -113,6 +113,8 @@ int main()
 			sdl();
 			in_char = 'q';
 		}
+		if (a == 2)
+			in_char = 'q';
 		switch(in_char) {
 			case 'q':
 				endwin();
@@ -125,10 +127,10 @@ int main()
 				break;
 			case 't':
 				ncur(wnd);
+				a = 2;
 			default:
 				break;
 		}
-
 		refresh();
 	}
 	endwin();

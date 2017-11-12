@@ -5,7 +5,13 @@
 # include <ncurses.h>
 # include "IMonitorDisplay.hpp"
 # include <sys/ioctl.h>
-
+# include <unistd.h>
+#include "DateTimeModule.hpp"
+#include "HostnameModule.hpp"
+#include "OSModule.hpp"
+#include "RAMModule.hpp"
+#include "CPUModule.hpp"
+#include "NetModule.hpp"
 
 class NCurcesDisplay: public IMonitorDisplay {
 public:
@@ -18,9 +24,15 @@ public:
 private:
 	NCurcesDisplay();
 	WINDOW *wnd;
-	int in_char;
-	//struct winsize wt;
+	int c;
+	struct winsize wt;
 
+	DateTimeModule t;
+	HostnameModule h;
+	OSModule	os;
+	CPUModule cpu;
+	RAMModule ram;
+	NetModule net;
 };
 
 #endif

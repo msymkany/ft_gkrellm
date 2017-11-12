@@ -14,18 +14,18 @@ void CPUModule::monitorInfo() {
 
 	std::stringstream ss;
 	ss << activity();
-//	double activ = activity();
 	std::string ncp = ncpu();
 	std::string tot = total();
 	if (!_info.empty())
 		_info.erase(_info.begin(), _info.end());
-	_info.push_back("Model:                         " + tot.substr(0, 29));
-	_info.push_back("Clock spead:               " + tot.substr(32, 39));
-	_info.push_back("Number of cores:      " + ncp);
-	_info.push_back("Activity:                       " + ss.str() + "%");
-//	std::cout << ss.str() << "% : activity" << std::endl;
-//	std::cout << ncp << " : number" << std::endl;
-//	std::cout << tot << " : total" << std::endl;
+	_info.push_back("Model:      " + tot.substr(0, 29));
+	_info.push_back("Clock spead:  " + tot.substr(32, 39));
+	_info.push_back("Number of cores:  " + ncp);
+	_info.push_back("Activity:  " + ss.str() + "%");
+//	_info.push_back("Model:                         " + tot.substr(0, 29));
+//	_info.push_back("Clock spead:               " + tot.substr(32, 39));
+//	_info.push_back("Number of cores:      " + ncp);
+//	_info.push_back("Activity:                       " + ss.str() + "%");
 }
 
 std::string CPUModule::total()
