@@ -25,8 +25,8 @@ public:
 	SDLDisplay &operator=(const SDLDisplay & rhs);
 	~SDLDisplay();
 	void start();
-	void get_text_and_rect(int x, int y, std::string &a, SDL_Texture **texture, SDL_Rect *rect, TTF_Font *font);
-	void     draw_info(std::string str, int x, int y, TTF_Font *font);
+	void get_text_and_rect(int x, int y, std::string &a, SDL_Texture **texture, SDL_Rect *rect, TTF_Font *font, SDL_Color selectedColour);
+	void     draw_info(std::string str, int x, int y, TTF_Font *font, SDL_Color selectedColour);
 
 private:
 	SDLDisplay();
@@ -34,7 +34,7 @@ private:
 	SDL_Window *window;
 	SDL_Renderer *renderer;
 	DateTimeModule t;
-	DateTimeModule t1;
+
 	HostnameModule h;
 	OSModule	os;
 	CPUModule cpu;
