@@ -72,6 +72,8 @@ void NCurcesDisplay::start() {
 		mvwprintw(wnd, wt.ws_row / 2 + 2, 5, "       press 3");
 		mvwprintw(wnd, wt.ws_row / 2 + 3, 5, "NETWORK Info :");
 		mvwprintw(wnd, wt.ws_row / 2 + 4, 5, "       press 4");
+		mvwprintw(wnd, wt.ws_row / 2 + 5, 5, "Exit :");
+		mvwprintw(wnd, wt.ws_row / 2 + 6, 5, "       press q");
 		wattroff(wnd, COLOR_PAIR(1));
 
 		if (useClip == 0)
