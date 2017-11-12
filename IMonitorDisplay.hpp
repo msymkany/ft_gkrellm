@@ -6,17 +6,7 @@
 
 class IMonitorDisplay {
 public:
-	IMonitorDisplay();
-	IMonitorDisplay(const IMonitorDisplay & rhs);
-	IMonitorDisplay &operator=(const IMonitorDisplay & rhs);
 	virtual ~IMonitorDisplay();
-
-	bool		getdisplay() const;
-	void		setdisplay( bool rhs );
-
-protected:
-	bool		display;
-
 };
 
 #endif

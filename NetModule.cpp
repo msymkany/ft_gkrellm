@@ -49,7 +49,8 @@ void NetModule::monitorInfo() {
             }
         }
     }
-
+	if (!_info.empty())
+		_info.erase(_info.begin(), _info.end());
     std::ostringstream stream;
     stream << static_cast<double>(ibytes) / 1000000000.0;
     _info.push_back(stream.str().substr(0, 7));

@@ -16,6 +16,8 @@ void		DateTimeModule::monitorInfo() {
 	char       buf[80];
 	std::string t;
 
+	if (!_info.empty())
+		_info.erase(_info.begin(), _info.end());
 	std::strftime(buf, sizeof(buf), "%Y-%m-%d.%X", std::localtime(&now));
 	t = buf;
 	_info.push_back(t);

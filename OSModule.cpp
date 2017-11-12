@@ -13,6 +13,8 @@ OSModule::~OSModule() { return; }
 void OSModule::monitorInfo() {
 	struct utsname os;
 
+	if (!_info.empty())
+		_info.erase(_info.begin(), _info.end());
 	uname(&os);
 	std::string s(os.sysname);
 	_info.push_back("System Name: " + s);

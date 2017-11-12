@@ -17,6 +17,8 @@ void CPUModule::monitorInfo() {
 //	double activ = activity();
 	std::string ncp = ncpu();
 	std::string tot = total();
+	if (!_info.empty())
+		_info.erase(_info.begin(), _info.end());
 	_info.push_back(tot.substr(0, 29));
 	_info.push_back(tot.substr(32, 39));
 	_info.push_back(ncp);

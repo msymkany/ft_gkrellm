@@ -37,6 +37,10 @@ void RAMModule::monitorInfo() {
 
 		long pages = sysconf(_SC_PHYS_PAGES);
 		long page_size = sysconf(_SC_PAGE_SIZE);
+
+		if (!_info.empty())
+			_info.erase(_info.begin(), _info.end());
+
 		std::stringstream ss;
 		ss << (pages * page_size / 1073741824.0);
 		std::string s = ss.str();

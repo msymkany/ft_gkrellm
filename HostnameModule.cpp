@@ -1,6 +1,8 @@
 #include "HostnameModule.hpp"
 
-HostnameModule::HostnameModule() : IMonitor("Hostname/username module") { monitorInfo(); }
+HostnameModule::HostnameModule() : IMonitor("Hostname/username module") {
+	monitorInfo();
+}
 HostnameModule::HostnameModule(const HostnameModule & rhs) { *this = rhs; }
 HostnameModule	&HostnameModule::operator=(const HostnameModule & rhs)
 {
@@ -14,6 +16,8 @@ void HostnameModule::monitorInfo() {
 	char hostname[_SC_HOST_NAME_MAX];
 	char username[_SC_LOGIN_NAME_MAX];
 
+	if (!_info.empty())
+		_info.erase(_info.begin(), _info.end());
 	if (gethostname(hostname, _SC_HOST_NAME_MAX))
 		_info.push_back("Can't resolve hostname");
 	else
@@ -29,6 +33,3 @@ void HostnameModule::monitorInfo() {
 		_info.push_back(u);
 	}
 }
-
-
-
