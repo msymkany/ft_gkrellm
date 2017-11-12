@@ -15,6 +15,8 @@
 #include "HostnameModule.hpp"
 #include "OSModule.hpp"
 #include "RAMModule.hpp"
+#include "CPUModule.hpp"
+#include "NetModule.hpp"
 
 
 int main()
@@ -45,5 +47,14 @@ int main()
 	std::cout << "RAM info"<< std::endl;
 	RAMModule ram;
 	std::cout<< std::endl;
+
+	std::cout << "CPU info"<< std::endl;
+	CPUModule cpu;
+	std::cout<< std::endl;
+
+	std::cout << "NET info"<< std::endl;
+	NetModule net;
+	std::cout<< std::endl;
+
 	return 0;
 }

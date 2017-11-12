@@ -12,4 +12,71 @@ CPUModule::~CPUModule() { return; }
 
 void CPUModule::monitorInfo() {
 	//	Your code here
+	double activ = activity();
+	std::string ncp = ncpu();
+	std::string tot = total();
+	std::cout << activ << "% : activity" << std::endl;
+	std::cout << ncp << " : number" << std::endl;
+	std::cout << tot << " : total" << std::endl;
+}
+
+std::string CPUModule::total()
+{
+	char buffer[BUFFERLEN];
+    size_t bufferlen = BUFFERLEN;
+    sysctlbyname("machdep.cpu.brand_string",&buffer,&bufferlen,NULL,0);
+   	return (buffer);
+}
+
+double CPUModule::activity()
+{
+	std::string activity;
+    static double oTotal = 0;
+    static double oWork = 0;
+    natural_t cpuCount;
+    processor_cpu_load_info_t cpuInfo;
+    mach_msg_type_number_t nbInfo;
+    kern_return_t ret = host_processor_info(mach_host_self(), PROCESSOR_CPU_LOAD_INFO, &cpuCount, reinterpret_cast<processor_info_array_t *>(&cpuInfo), &nbInfo);
+    if (ret != KERN_SUCCESS) {
+        activity = "0";
+    }
+
+    size_t system = 0;
+    size_t user = 0;
+    size_t idle = 0;
+    size_t totalSystemTime = 0;
+    size_t totalUserTime = 0;
+    size_t totalIdleTime = 0;
+    for (natural_t i = 0; i < cpuCount; i++) {
+        system = cpuInfo[i].cpu_ticks[CPU_STATE_SYSTEM];
+        user = cpuInfo[i].cpu_ticks[CPU_STATE_USER] + cpuInfo[i].cpu_ticks[CPU_STATE_NICE];
+        idle = cpuInfo[i].cpu_ticks[CPU_STATE_IDLE];
+
+        totalSystemTime += system;
+        totalUserTime += user;
+        totalIdleTime += idle;
+    }
+
+    double nTotal = totalIdleTime + totalSystemTime + totalUserTime;
+    double nWork = totalSystemTime + totalUserTime;
+
+    double _activity = (nWork - oWork)/(nTotal - oTotal) * 100;
+    std::stringstream activeS;
+    activeS << _activity;
+    activity = activeS.str();
+
+    oTotal = nTotal;
+    oWork = nWork;
+
+    return (_activity);
+}
+
+std::string CPUModule::ncpu()
+{
+	size_t test2 = sizeof(int);
+    int cpy;
+    sysctlbyname("hw.ncpu", &cpy, &test2, NULL, 0);
+    std::ostringstream stream;
+    stream << cpy;
+    return (stream.str());
 }

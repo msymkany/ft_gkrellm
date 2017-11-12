@@ -40,11 +40,11 @@ void RAMModule::monitorInfo() {
 
 		long pages = sysconf(_SC_PHYS_PAGES);
 		long page_size = sysconf(_SC_PAGE_SIZE);
-		std::cout << pages * page_size / 1073741824.0 << ".0 :total" << std::endl;
+		std::cout << pages * page_size / 1073741824.0 << ".0 GB :total" << std::endl;
 
 		std::cout << ret << " :usage "<< std::endl;
 		std::cout << static_cast<double>(freeMemory) / 1000000000.0  << " :free "<< std::endl;
-		std::cout << static_cast<double>(usedMemory) / 1073741824.0 << " :usedMemory "<< std::endl;
+		std::cout << static_cast<double>(usedMemory) / 1000000000.0 << " :usedMemory "<< std::endl;
 	}
 	return ;
 }

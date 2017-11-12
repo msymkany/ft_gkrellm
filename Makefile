@@ -21,6 +21,8 @@ SOURCE := main.cpp \
         HostnameModule.cpp \
         OSModule.cpp \
         RAMModule.cpp \
+        CPUModule.cpp \
+        NetModule.cpp \
 
 OBJECTS := $(SOURCE:.cpp=.o)
 
