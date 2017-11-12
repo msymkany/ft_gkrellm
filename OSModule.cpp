@@ -1,6 +1,6 @@
 #include "OSModule.hpp"
 
-OSModule::OSModule(): IMonitorModule("OS module") { monitorInfo(); }
+OSModule::OSModule(): IMonitor("OS module") { monitorInfo(); }
 OSModule::OSModule(const OSModule & rhs) { *this = rhs; }
 OSModule	&OSModule::operator=(const OSModule & rhs)
 {

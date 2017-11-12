@@ -1,6 +1,6 @@
 #include "DateTimeModule.hpp"
 
-DateTimeModule::DateTimeModule() : IMonitorModule("Date/time module") { monitorInfo(); }
+DateTimeModule::DateTimeModule() : IMonitor("Date/time module") { monitorInfo(); }
 DateTimeModule::DateTimeModule(const DateTimeModule & rhs) { *this = rhs; }
 DateTimeModule	&DateTimeModule::operator=(const DateTimeModule & rhs)
 {

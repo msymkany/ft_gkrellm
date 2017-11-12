@@ -1,5 +1,5 @@
-#ifndef IMONITORMODULE_HPP_
-# define IMONITORMODULE_HPP_
+#ifndef IMONITOR_HPP_
+# define IMONITOR_HPP_
 
 #include <iostream>
 #include <vector>
@@ -9,7 +9,6 @@ class IMonitor : public IMonitorModule {
 public:
 	virtual ~IMonitor();
 	std::string		getTitle() const;
-
 	const char *getInfo(size_t i) const;
 	size_t 	getSize() const;
 	virtual void 	monitorInfo() = 0;

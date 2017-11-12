@@ -1,10 +1,10 @@
 #ifndef IMONITORMODULE_HPP_
 # define IMONITORMODULE_HPP_
 
-class IMonitorModule {
+class IMonitorModule
+{
 public:
-	IMonitorModule(){};
-	virtual ~IMonitorModule() = 0 {};
+	virtual ~IMonitorModule() {};
 	virtual void 	monitorInfo() = 0;
 
 };

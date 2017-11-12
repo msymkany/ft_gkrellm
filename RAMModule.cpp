@@ -1,6 +1,6 @@
 #include "RAMModule.hpp"
 
-RAMModule::RAMModule() : IMonitorModule("Hostname/username module") { monitorInfo(); }
+RAMModule::RAMModule() : IMonitor("Hostname/username module") { monitorInfo(); }
 RAMModule::RAMModule(const RAMModule & rhs) { *this = rhs; }
 RAMModule	&RAMModule::operator=(const RAMModule & rhs)
 {
