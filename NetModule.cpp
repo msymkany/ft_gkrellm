@@ -53,19 +53,19 @@ void NetModule::monitorInfo() {
 		_info.erase(_info.begin(), _info.end());
     std::ostringstream stream;
     stream << static_cast<double>(ibytes) / 1000000000.0;
-    _info.push_back(stream.str().substr(0, 7));
+    _info.push_back("Data received:  " + stream.str().substr(0, 7));
 
     std::ostringstream stream2;
     stream2 << static_cast<double>(obytes) / 1000000000.0;
-	_info.push_back(stream2.str().substr(0, 7));
+	_info.push_back("Data send:  " + stream2.str().substr(0, 7));
 
     std::ostringstream stream3;
     stream3 <<  ipackets;
-	_info.push_back(stream3.str());
+	_info.push_back("Packets in:  " + stream3.str());
 
     std::ostringstream stream4;
     stream4 << opackets;
-	_info.push_back(stream4.str());
+	_info.push_back("Packets out:  " + stream4.str());
 
 //	std::cout << _inbytes << " : input bytes" << std::endl;
 //	std::cout << _oubytes << " : out bytes" << std::endl;

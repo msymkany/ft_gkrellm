@@ -44,22 +44,22 @@ void RAMModule::monitorInfo() {
 		std::stringstream ss;
 		ss << (pages * page_size / 1073741824.0);
 		std::string s = ss.str();
-		_info.push_back(s  + ".0 GB");
+		_info.push_back("Physical memory: " + s  + ".0 GB");
 //		std::cout << pages * page_size / 1073741824.0 << ".0 GB :total" << std::endl;
 		ss.str(std::string());
 		ss << (ret);
 		s = ss.str();
-		_info.push_back(s);
+		_info.push_back("Activity memory:  " + s + "%");
 //		std::cout << ret << " :usage "<< std::endl;
 		ss.str(std::string());
 		ss << (static_cast<double>(freeMemory) / 1000000000.0);
 		s = ss.str();
-		_info.push_back(s);
+		_info.push_back("Free memory:  " + s);
 //		std::cout << static_cast<double>(freeMemory) / 1000000000.0  << " :free "<< std::endl;
 		ss.str(std::string());
 		ss << (static_cast<double>(usedMemory) / 1000000000.0);
 		s = ss.str();
-		_info.push_back(s);
+		_info.push_back("Used memory:  " + s);
 //		std::cout << static_cast<double>(usedMemory) / 1000000000.0 << " :usedMemory "<< std::endl;
 	}
 	return ;
