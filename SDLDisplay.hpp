@@ -34,8 +34,12 @@ private:
 	SDL_Window *window;
 	SDL_Renderer *renderer;
 	DateTimeModule t;
+	DateTimeModule t1;
 	HostnameModule h;
 	OSModule	os;
+	CPUModule cpu;
+	RAMModule ram;
+	NetModule net;
 };
 
 #endif

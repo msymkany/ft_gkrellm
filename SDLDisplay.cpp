@@ -23,7 +23,7 @@ void SDLDisplay::get_text_and_rect(int x, int y, std::string &a,SDL_Texture **te
 	int text_width;
 	int text_height;
 	SDL_Surface *surface;
-	SDL_Color selectedColour = {0, 106, 132, 0}; //rgb(0,106,132)
+	SDL_Color selectedColour = {0, 0, 150, 0}; //rgb(0,106,132)
 	surface = TTF_RenderText_Solid(font, a.c_str(), selectedColour);
 	*texture = SDL_CreateTextureFromSurface(renderer, surface);
 	text_width = surface->w;
@@ -62,16 +62,18 @@ void SDLDisplay::start()
 	SDL_RenderClear(renderer);
 	TTF_Init();
 	font = TTF_OpenFont( "libraries/SEASRN__.ttf", 35);
-    f = TTF_OpenFont( "libraries/AmaticSC-Regular.ttf", 35);
+    f = TTF_OpenFont( "libraries/Aller_Rg.ttf", 25);
 	SDL_Event e;
 	bool quit = false;
     int useClip = 0;
+
 	while (1)
 	{
         SDL_RenderClear(renderer);
 		while (SDL_PollEvent(&e)){
 			if (e.type == SDL_QUIT){
 				quit = true;
+				break ;
 			}
 			if (e.type == SDL_KEYDOWN){
 				switch (e.key.keysym.sym){
@@ -110,9 +112,6 @@ void SDLDisplay::start()
 
         if (useClip == 0)
         {
-            /*h.monitorInfo();
-            
-            os.monitorInfo();*/
             t.monitorInfo();
 		      draw_info(t.getTitle(), 400, 0, f);
               draw_info(t.getInfo(0), 800, 0, f);
@@ -124,18 +123,27 @@ void SDLDisplay::start()
               for (size_t i = 0; i < os.getSize(); i++)
                 draw_info(os.getInfo(i), 800, 120 + (i * 40), f);
         }
-      /*  if (useClip == 1)
-          draw_info("CPU Info : press 2", 0, 0);
-        if (useClip == 2)
-          draw_info("RAM Info : press 3", 0, 0);
-      if (useClip == 2)
-          draw_info("NETWORK Info : press 4", 0, 0);*/
+        if (useClip == 1){
+        	cpu.monitorInfo();
+          for (size_t i = 0; i < cpu.getSize(); i++)
+               draw_info(cpu.getInfo(i), 400, 40 + (i * 40) , f);
+        }
+        if (useClip == 2){
+          	ram.monitorInfo();
+          for (size_t i = 0; i < ram.getSize(); i++)
+               draw_info(ram.getInfo(i), 400, 40 + (i * 40) , f);
+        }
+      if (useClip == 3){
+         	net.monitorInfo();
+          for (size_t i = 0; i < net.getSize(); i++)
+               draw_info(net.getInfo(i), 400, 40 + (i * 40) , f);
+      }
 
         SDL_RenderPresent(renderer);
         SDL_RenderClear(renderer);
         if (quit == true)
             break ;
-
+        SDL_Delay(1000);
 	}
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
