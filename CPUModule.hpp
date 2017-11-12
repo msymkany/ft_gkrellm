@@ -2,9 +2,10 @@
 # define CPUMODULE_HPP_
 
 #include <iostream>
-#include "IMonitorModule.hpp"
+#include "IMonitor.hpp"
 
 #include <ctime>
+#include <sstream>
 #include <sys/types.h>
 #include <sys/sysctl.h>
 #include <iostream>
@@ -15,7 +16,7 @@
 #include <mach/mach_host.h>
 #define BUFFERLEN 128
 
-class CPUModule : public IMonitorModule {
+class CPUModule : public IMonitor {
 public:
 	CPUModule();
 	CPUModule(const CPUModule & rhs);

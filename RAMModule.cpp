@@ -11,9 +11,6 @@ RAMModule	&RAMModule::operator=(const RAMModule & rhs)
 RAMModule::~RAMModule() { return; }
 
 void RAMModule::monitorInfo() {
-	//	Your code here, include libraries in RAMModule.hpp
-	// for example
-	//I'll convert your data to _info vectors
 	vm_size_t page_size;
 	mach_port_t mach_port;
 	mach_msg_type_number_t count;
@@ -40,11 +37,26 @@ void RAMModule::monitorInfo() {
 
 		long pages = sysconf(_SC_PHYS_PAGES);
 		long page_size = sysconf(_SC_PAGE_SIZE);
-		std::cout << pages * page_size / 1073741824.0 << ".0 GB :total" << std::endl;
-
-		std::cout << ret << " :usage "<< std::endl;
-		std::cout << static_cast<double>(freeMemory) / 1000000000.0  << " :free "<< std::endl;
-		std::cout << static_cast<double>(usedMemory) / 1000000000.0 << " :usedMemory "<< std::endl;
+		std::stringstream ss;
+		ss << (pages * page_size / 1073741824.0);
+		std::string s = ss.str();
+		_info.push_back(s  + ".0 GB");
+//		std::cout << pages * page_size / 1073741824.0 << ".0 GB :total" << std::endl;
+		ss.str(std::string());
+		ss << (ret);
+		s = ss.str();
+		_info.push_back(s);
+//		std::cout << ret << " :usage "<< std::endl;
+		ss.str(std::string());
+		ss << (static_cast<double>(freeMemory) / 1000000000.0);
+		s = ss.str();
+		_info.push_back(s);
+//		std::cout << static_cast<double>(freeMemory) / 1000000000.0  << " :free "<< std::endl;
+		ss.str(std::string());
+		ss << (static_cast<double>(usedMemory) / 1000000000.0);
+		s = ss.str();
+		_info.push_back(s);
+//		std::cout << static_cast<double>(usedMemory) / 1000000000.0 << " :usedMemory "<< std::endl;
 	}
 	return ;
 }

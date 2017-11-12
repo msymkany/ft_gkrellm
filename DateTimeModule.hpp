@@ -3,9 +3,9 @@
 
 #include <iostream>
 #include <ctime>
-#include "IMonitorModule.hpp"
+#include "IMonitor.hpp"
 
-class DateTimeModule : public IMonitorModule {
+class DateTimeModule : public IMonitor {
 public:
 	DateTimeModule();
 	DateTimeModule(const DateTimeModule & rhs);

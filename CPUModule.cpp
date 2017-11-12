@@ -11,13 +11,19 @@ CPUModule	&CPUModule::operator=(const CPUModule & rhs)
 CPUModule::~CPUModule() { return; }
 
 void CPUModule::monitorInfo() {
-	//	Your code here
-	double activ = activity();
+
+	std::stringstream ss;
+	ss << activity();
+//	double activ = activity();
 	std::string ncp = ncpu();
 	std::string tot = total();
-	std::cout << activ << "% : activity" << std::endl;
-	std::cout << ncp << " : number" << std::endl;
-	std::cout << tot << " : total" << std::endl;
+	_info.push_back(tot.substr(0, 29));
+	_info.push_back(tot.substr(32, 39));
+	_info.push_back(ncp);
+	_info.push_back(ss.str() + "%");
+//	std::cout << ss.str() << "% : activity" << std::endl;
+//	std::cout << ncp << " : number" << std::endl;
+//	std::cout << tot << " : total" << std::endl;
 }
 
 std::string CPUModule::total()

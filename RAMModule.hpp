@@ -2,7 +2,7 @@
 # define RAMMODULE_HPP_
 
 #include <iostream>
-#include "IMonitorModule.hpp"
+#include "IMonitor.hpp"
 #include <unistd.h>
 #include <mach/mach_host.h>
 #include <sstream>
@@ -11,7 +11,7 @@
 #include <mach/mach_init.h>
 #include <mach/mach_host.h>
 
-class RAMModule : public IMonitorModule {
+class RAMModule : public IMonitor {
 public:
 	RAMModule();
 	RAMModule(const RAMModule & rhs);

@@ -2,13 +2,13 @@
 # define OSMODULE_HPP_
 
 # include <iostream>
-# include "IMonitorModule.hpp"
+# include "IMonitor.hpp"
 # include <sys/utsname.h>
 #include <fstream>
 #include <cstdlib>
 #include <string>
 
-class OSModule : public IMonitorModule {
+class OSModule : public IMonitor {
 public:
 	OSModule();
 	OSModule(const OSModule & rhs);

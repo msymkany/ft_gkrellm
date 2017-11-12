@@ -17,7 +17,7 @@ FL := -Wall -Wextra -Werror
 
 SOURCE := main.cpp \
         DateTimeModule.cpp \
-        IMonitorModule.cpp \
+        IMonitor.cpp \
         HostnameModule.cpp \
         OSModule.cpp \
         RAMModule.cpp \

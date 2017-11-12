@@ -2,11 +2,11 @@
 # define HOSTNAMEMODULE_HPP_
 
 #include <iostream>
-#include "IMonitorModule.hpp"
+#include "IMonitor.hpp"
 #include <unistd.h>
 #include <climits>
 
-class HostnameModule : public IMonitorModule {
+class HostnameModule : public IMonitor {
 public:
 	HostnameModule();
 	HostnameModule(const HostnameModule & rhs);

@@ -11,27 +11,16 @@ NetModule	&NetModule::operator=(const NetModule & rhs)
 NetModule::~NetModule() { return; }
 
 void NetModule::monitorInfo() {
-	//	Your code here
-
-	getInfo();
-	std::cout << _inbytes << " : input bytes" << std::endl;
-	std::cout << _oubytes << " : out bytes" << std::endl;
-	std::cout << _inpucket << " : input pakets" << std::endl;
-	std::cout << _oupacket << " : out pakets" << std::endl;
-}
-
-void NetModule::getInfo()
-{
 	int         mib[6];
-    char         *lim;
-    char         *next;
-    size_t         len;
-    struct         if_msghdr *ifm;
+	char         *lim;
+	char         *next;
+	size_t         len;
+	struct         if_msghdr *ifm;
 
-    long int     ipackets = 0;
-    long int     opackets = 0;
-    long int     ibytes = 0;
-    long int     obytes = 0;
+	long int     ipackets = 0;
+	long int     opackets = 0;
+	long int     ibytes = 0;
+	long int     obytes = 0;
 
     mib[0]= CTL_NET;// networking subsystem
     mib[1]= PF_ROUTE;// type of information
@@ -63,17 +52,22 @@ void NetModule::getInfo()
 
     std::ostringstream stream;
     stream << static_cast<double>(ibytes) / 1000000000.0;
-    _inbytes = stream.str().substr(0, 7);
+    _info.push_back(stream.str().substr(0, 7));
 
     std::ostringstream stream2;
     stream2 << static_cast<double>(obytes) / 1000000000.0;
-    _oubytes = stream2.str().substr(0, 7);
+	_info.push_back(stream2.str().substr(0, 7));
 
     std::ostringstream stream3;
     stream3 <<  ipackets;
-    _inpucket = stream3.str();
+	_info.push_back(stream3.str());
 
     std::ostringstream stream4;
     stream4 << opackets;
-    _oupacket = stream4.str();
+	_info.push_back(stream4.str());
+
+//	std::cout << _inbytes << " : input bytes" << std::endl;
+//	std::cout << _oubytes << " : out bytes" << std::endl;
+//	std::cout << _inpucket << " : input pakets" << std::endl;
+//	std::cout << _oupacket << " : out pakets" << std::endl;
 }

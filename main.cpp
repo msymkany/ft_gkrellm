@@ -10,7 +10,7 @@
 //                                                                            //
 // ************************************************************************** //
 
-#include "IMonitorModule.hpp"
+#include "IMonitor.hpp"
 #include "DateTimeModule.hpp"
 #include "HostnameModule.hpp"
 #include "OSModule.hpp"
@@ -18,8 +18,7 @@
 #include "CPUModule.hpp"
 #include "NetModule.hpp"
 
-
-int main()
+void 	testModule(void)
 {
 	DateTimeModule t;
 	HostnameModule h;
@@ -46,15 +45,34 @@ int main()
 
 	std::cout << "RAM info"<< std::endl;
 	RAMModule ram;
+	for (size_t i = 0; i < ram.getSize(); i++)
+	{
+		std::cout << ram.getInfo(i) << std::endl;
+	}
 	std::cout<< std::endl;
 
 	std::cout << "CPU info"<< std::endl;
 	CPUModule cpu;
+	for (size_t i = 0; i < cpu.getSize(); i++)
+	{
+		std::cout << cpu.getInfo(i) << std::endl;
+	}
 	std::cout<< std::endl;
 
 	std::cout << "NET info"<< std::endl;
 	NetModule net;
+	for (size_t i = 0; i < net.getSize(); i++)
+	{
+		std::cout << net.getInfo(i) << std::endl;
+	}
 	std::cout<< std::endl;
+
+}
+
+int main()
+{
+	testModule();
+
 
 	return 0;
 }
