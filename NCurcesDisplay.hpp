@@ -5,7 +5,7 @@
 # include <ncurses.h>
 # include "IMonitorDisplay.hpp"
 # include <sys/ioctl.h>
-#include "SDLDisplay.hpp"
+
 
 class NCurcesDisplay: public IMonitorDisplay {
 public:
