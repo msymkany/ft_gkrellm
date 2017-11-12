@@ -40,8 +40,7 @@ void     SDLDisplay::draw_info(std::string str, int x, int y, TTF_Font *font, SD
 {
 	SDL_Texture * mTexture;
 	SDL_Rect tmp;
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0 );
-	SDL_Color textColor = {2, 2, 2, 0};
+	SDL_Color textColor = {230, 223, 240, 0};
 	textColor = textColor;
 	get_text_and_rect(x, y, str, &mTexture, &tmp, font, selectedColour);
 	SDL_RenderCopy(renderer, mTexture, NULL, &tmp);
@@ -52,6 +51,8 @@ void SDLDisplay::start()
 {
     TTF_Font *font;
     TTF_Font *f;
+SDL_Rect rect;
+
 	window = nullptr;
 	renderer = nullptr;
 	if ((window = SDL_CreateWindow("RUSH_01", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT,
@@ -66,7 +67,9 @@ void SDLDisplay::start()
 	SDL_Event e;
 	bool quit = false;
     int useClip = 0;
-SDL_Color selectedColour = {0, 0, 150, 0};
+SDL_Color selectedColour = {42,20,25, 0};
+SDL_SetRenderDrawColor(renderer, 230, 223, 240, 0 );
+SDL_Color Colour = {170,72,95, 0};
 	while (1)
 	{
         SDL_RenderClear(renderer);
@@ -101,6 +104,17 @@ SDL_Color selectedColour = {0, 0, 150, 0};
 				}
 			}
 		}
+
+		rect.x = 0;
+		rect.y = 0;
+		rect.w = 350;
+		rect.h = 400;
+		SDL_SetRenderDrawColor(renderer, 153,126,201, 0 );
+
+		SDL_RenderFillRect(renderer, &rect);
+		SDL_SetRenderDrawColor(renderer, 230, 223, 240, 0 );
+
+
         draw_info("OS Info :", 0, 0, font, selectedColour);
         draw_info("       press 1", 0, 40, font, selectedColour);
         draw_info("CPU Info : ", 0, 80, font, selectedColour);
@@ -112,6 +126,12 @@ SDL_Color selectedColour = {0, 0, 150, 0};
 
         if (useClip == 0)
         {
+
+        	
+        	
+        	draw_info("OS Info :", 0, 0, font, Colour);
+        draw_info("       press 1", 0, 40, font, Colour);
+
             t.monitorInfo();
 		      draw_info(t.getTitle(), 400, 0, f, selectedColour);
               draw_info(t.getInfo(0), 800, 0, f, selectedColour);
@@ -124,16 +144,24 @@ SDL_Color selectedColour = {0, 0, 150, 0};
                 draw_info(os.getInfo(i), 800, 120 + (i * 40), f, selectedColour);
         }
         if (useClip == 1){
+
+        	draw_info("CPU Info : ", 0, 80, font, Colour);
+        draw_info("       press 2", 0, 120, font, Colour);
         	cpu.monitorInfo();
           for (size_t i = 0; i < cpu.getSize(); i++)
                draw_info(cpu.getInfo(i), 400, 40 + (i * 40) , f, selectedColour);
         }
         if (useClip == 2){
+        	draw_info("RAM Info :", 0, 160,font, Colour);
+        draw_info("       press 3", 0, 200,font, Colour);
           	ram.monitorInfo();
           for (size_t i = 0; i < ram.getSize(); i++)
                draw_info(ram.getInfo(i), 400, 40 + (i * 40) , f, selectedColour);
         }
       if (useClip == 3){
+      	draw_info("NETWORK Info :", 0, 240, font, Colour);
+        draw_info("       press 4", 0, 280, font, Colour);
+
          	net.monitorInfo();
           for (size_t i = 0; i < net.getSize(); i++)
                draw_info(net.getInfo(i), 400, 40 + (i * 40) , f, selectedColour);
