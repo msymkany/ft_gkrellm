@@ -5,20 +5,21 @@
 # include <ncurses.h>
 # include "IMonitorDisplay.hpp"
 # include <sys/ioctl.h>
+#include "SDLDisplay.hpp"
 
 class NCurcesDisplay: public IMonitorDisplay {
 public:
-	NCurcesDisplay();
 	NCurcesDisplay(const NCurcesDisplay & rhs);
+	NCurcesDisplay(WINDOW *wn);
 	NCurcesDisplay &operator=(const NCurcesDisplay & rhs);
 	~NCurcesDisplay();
-	void initDisplay();
 	void start();
 
 private:
+	NCurcesDisplay();
 	WINDOW *wnd;
 	int in_char;
-	struct winsize wt;
+	//struct winsize wt;
 
 };
 

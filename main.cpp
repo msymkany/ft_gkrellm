@@ -17,6 +17,8 @@
 #include "RAMModule.hpp"
 #include "CPUModule.hpp"
 #include "NetModule.hpp"
+#include "NCurcesDisplay.hpp"
+#include "SDLDisplay.hpp"
 
 void 	testModule(void)
 {
@@ -75,8 +77,59 @@ void 	testModule(void)
 
 }
 
+void ncur(WINDOW *wnd)
+{
+	NCurcesDisplay n(wnd);
+}
+
+void sdl()
+{
+	SDLDisplay sdl(0);
+}
+
 int main()
 {
-	testModule();
+	//testModule();
+	WINDOW *wnd;
+	int in_char;
+	struct winsize wt;
+
+	ioctl(0, TIOCGWINSZ, &wt);
+	int a = 0;
+	wnd = initscr();
+	cbreak();
+	noecho();
+	clear();
+	refresh();
+	keypad(wnd, true);
+	nodelay(wnd, true);
+	curs_set(0);
+	mvwprintw(wnd, wt.ws_row / 2, wt.ws_col / 2 - 16, "Graphic mode : g \t Text mode : t");
+	
+	while (1){
+		in_char = wgetch(wnd);
+		if (a == 1)
+		{
+			sdl();
+			in_char = 'q';
+		}
+		switch(in_char) {
+			case 'q':
+				endwin();
+				exit(0);
+				break;
+			case 'g':
+				clear();
+				mvwprintw(wnd, wt.ws_row / 2, wt.ws_col / 2 - 6, "To be continue.....");
+				a = 1;
+				break;
+			case 't':
+				ncur(wnd);
+			default:
+				break;
+		}
+
+		refresh();
+	}
 	return 0;
 }
