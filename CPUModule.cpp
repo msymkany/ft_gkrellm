@@ -22,10 +22,6 @@ void CPUModule::monitorInfo() {
 	_info.push_back("Clock spead:  " + tot.substr(32, 39));
 	_info.push_back("Number of cores:  " + ncp);
 	_info.push_back("Activity:  " + ss.str() + "%");
-//	_info.push_back("Model:                         " + tot.substr(0, 29));
-//	_info.push_back("Clock spead:               " + tot.substr(32, 39));
-//	_info.push_back("Number of cores:      " + ncp);
-//	_info.push_back("Activity:                       " + ss.str() + "%");
 }
 
 std::string CPUModule::total()
